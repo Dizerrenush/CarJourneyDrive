@@ -17,11 +17,13 @@ public class PlayerController : NetworkBehaviour
         if (!IsOwner) 
         { 
             _cum.enabled = false;
+            _cum.GetComponent<AudioListener>().enabled= false;
             return;
         }
 
 
         _playerController = GetComponent<CharacterController>();
+        
         Cursor.lockState = CursorLockMode.Locked;
         
     }
@@ -38,6 +40,6 @@ public class PlayerController : NetworkBehaviour
     }
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-         
+        
     }
 }

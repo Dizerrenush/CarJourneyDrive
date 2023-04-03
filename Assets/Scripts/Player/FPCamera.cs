@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
-public class FPCamera : MonoBehaviour
+public class FPCamera : NetworkBehaviour
 {
     public Transform Player;
     public float RotationSpeed;
@@ -39,7 +40,7 @@ public class FPCamera : MonoBehaviour
         if (Physics.Raycast(transform.position, transform.forward, out hit, 2f, Interact))
         {
             Debug.Log(hit.collider.gameObject.name);
-            hit.collider.gameObject.GetComponentInParent<IInteractable>().OnUse();
+            hit.collider.gameObject.GetComponent<IInteractable>().OnUse();
            
         }
     }

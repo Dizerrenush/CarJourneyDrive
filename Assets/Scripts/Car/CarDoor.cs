@@ -2,23 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IInteractable 
+public class CarDoor : CarPart
 {
-    public void OnUse();
-}
+    [SerializeField]private float _currentAngle;
+    [SerializeField] private float LRDoor;
 
-public class CarDoor : MonoBehaviour, IInteractable
-{
-    private float _currentAngle = 0;
-
-    public float LRDoor;
-
-    // Update is called once per frame
-  
-    public void OnUse()
+    public override void PartInteraction()
     {
-        if (_currentAngle == 0) _currentAngle = 60*LRDoor;
+        if (_currentAngle == 0) _currentAngle = 60 * LRDoor;
         else _currentAngle = 0;
-        transform.rotation = Quaternion.Euler(0, _currentAngle, 0);
+        _parent.localRotation = Quaternion.Euler(0, _currentAngle, 0);
     }
+    
 }
